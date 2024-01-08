@@ -17,5 +17,11 @@ class FizzBuzzTest {
         assertEquals("Fizz", fizzBuzz.print(3))
     }
 
+    @Test
+    fun `should print Buzz when number is 5`() {
+        val fizzBuzz = FizzBuzz()
+        assertEquals("Buzz", fizzBuzz.print(5))
+    }
+
 }
 
