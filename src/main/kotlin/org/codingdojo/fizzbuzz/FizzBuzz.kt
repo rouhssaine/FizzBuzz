@@ -3,8 +3,10 @@ package org.codingdojo.fizzbuzz
 class FizzBuzz {
 
     fun print(number: Int): String {
-        if(number % 3 == 0) return "Fizz"
-        if(number % 5 == 0) return "Buzz"
+        if(isMultipleOf(number, 3)) return "Fizz"
+        if(isMultipleOf(number, 5)) return "Buzz"
         return number.toString()
     }
+
+    private fun isMultipleOf(number: Int, divider: Int) = number % divider == 0
 }
