@@ -1,12 +1,20 @@
 package org.codingdojo.fizzbuzz
 
+import java.util.function.Predicate
+
 class FizzBuzz {
 
     fun print(number: Int): String {
-        if(isMultipleOf(number, 3)) return "Fizz"
-        if(isMultipleOf(number, 5)) return "Buzz"
-        return number.toString()
+        val result = FizzBuzzCode.entries
+            .filter { e -> e.isMultipleOf.test(number) }
+            .joinToString (separator = "") { e -> e.value }
+
+        return result.ifEmpty { number.toString() }
     }
 
-    private fun isMultipleOf(number: Int, divider: Int) = number % divider == 0
+    private enum class FizzBuzzCode(val isMultipleOf: Predicate<Int>, val value: String) {
+        FIZZ({ number -> number % 3 == 0 }, "Fizz"),
+        BUZZ({ number -> number % 5 == 0 }, "Buzz");
+    }
+
 }
